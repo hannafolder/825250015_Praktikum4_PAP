@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tugas Praktikum 4</title>
+<style>
+  :root{
+    --dusty: #c98a94;
+    --dusty-deep: #a56b74;
+    --blush: #f7e6e4;
+    --cream: #fdf6f2;
+    --brown: #6b4a4d;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    background: var(--cream);
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    color: var(--brown);
+    padding: 40px 20px;
+  }
+
+  h2{
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--dusty-deep);
+  }
+
+
+  .controls{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  button{
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(169,107,116,0.25);
+  }
+
+  #btnBuat{
+    background: var(--dusty);
+    color: white;
+  }
+  #btnBuat:hover{ transform: translateY(-2px) scale(1.03); }
+
+  #btnHapus{
+    background: var(--blush);
+    color: var(--dusty-deep);
+  }
+  #btnHapus:hover{ transform: translateY(-2px) scale(1.03); }
+
+  #kartuWrap{
+    min-height: 170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .kartu{
+    width: 300px;
+    background: white;
+    border: 2px dashed var(--dusty);
+    border-radius: 20px;
+    padding: 22px 26px;
+    display:flex;
+    flex-direction:column;
+    gap: 6px;
+    align-items:center;
+    text-align:center;
+    box-shadow: 0 10px 24px rgba(169,107,116,0.18);
+    animation: pop 0.25s ease-out;
+  }
+
+  @keyframes pop{
+    from{ opacity:0; transform: scale(0.9); }
+    to{ opacity:1; transform: scale(1); }
+  }
+
+  .kartu .emoji{ font-size: 1.8rem; }
+
+  .kartu .nama{
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: var(--dusty-deep);
+  }
+
+  .kartu .nim{
+    font-size: 0.95rem;
+    color: var(--brown);
+    background: var(--blush);
+    padding: 3px 12px;
+    border-radius: 999px;
+  }
+
+  .placeholder{
+    color: #c9a8ac;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+  <h2>Kartu Identitas Mahasiswa</h2>
+
+  <div class="controls">
+    <button id="btnBuat">Tampilkan ID</button>
+    <button id="btnHapus">Hapus ID</button>
+  </div>
+
+  <div id="kartuWrap">
+    <p class="placeholder">belum ada kartu, klik tombol di atas ya~</p>
+  </div>
+
+  <script>
+    const nama = "Hanna Nathalia";
+    const nim = "825250015";
+
+    const wrap = document.getElementById('kartuWrap');
+
+    document.getElementById('btnBuat').addEventListener('click', () => {
+      wrap.innerHTML = `
+        <div class="kartu">
+          <span class="nama">${nama}</span>
+          <span class="nim">NIM ${nim}</span>
+        </div>
+      `;
+    });
+
+    document.getElementById('btnHapus').addEventListener('click', () => {
+      wrap.innerHTML = `<p class="placeholder">belum ada kartu, klik tombol di atas ya~</p>`;
+    });
+  </script>
+
+</body>
+</html>
